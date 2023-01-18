@@ -221,6 +221,23 @@ public class FormularioTeste extends BaseTest {
 
 		
 	}
+	
+	@Test
+	public void deveAlterarData() {
+		page.clicarPorTexto("01/01/2000");
+		page.clicarPorTexto("20");
+		page.clicarPorTexto("OK");
+		Assert.assertTrue(page.existeElementoPorTexto("20/02/2000"));
+	}
+	
+	public void deveAlterarHora() {
+		page.clicarPorTexto("06:00");
+		page.clicar(MobileBy.AccessibilityId("10"));
+		page.clicar(MobileBy.AccessibilityId("40"));
+		page.clicarPorTexto("OK");
+		Assert.assertTrue(page.existeElementoPorTexto("10:40"));
+		
+	}
 
 		
 		
