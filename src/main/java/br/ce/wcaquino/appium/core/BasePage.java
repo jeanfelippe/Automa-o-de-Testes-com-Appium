@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 
 import static br.ce.wcaquino.appium.core.DriverFactory.getDriver;
 
@@ -39,6 +40,10 @@ public class BasePage {
 	public boolean existeElementoPorTexto(String texto) {
 		List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
 		return elementos.size()>0;
+	}
+	
+	public void tap(int x, int y) {
+		new TouchAction(getDriver()).tap(x,y).perform();
 	}
 
 
