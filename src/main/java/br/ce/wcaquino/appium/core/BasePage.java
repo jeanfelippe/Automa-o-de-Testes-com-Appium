@@ -8,6 +8,8 @@ import io.appium.java_client.TouchAction;
 
 import static br.ce.wcaquino.appium.core.DriverFactory.getDriver;
 
+import java.awt.Dimension;
+import java.time.Duration;
 import java.util.List;
 
 public class BasePage {
@@ -44,6 +46,21 @@ public class BasePage {
 	
 	public void tap(int x, int y) {
 		new TouchAction(getDriver()).tap(x,y).perform();
+	}
+	
+	public void swipe(double inicio, double fim) {
+		org.openqa.selenium.Dimension size = getDriver().manage().window().getSize();
+		
+		int y=size.height/2;
+		
+		int start_x=(int)(size.width*inicio);
+		int end_x=(int)(size.width*fim);
+		
+		new TouchAction(getDriver()).press(start_x,y)
+		.waitAction(Duration.ofMillis(500))
+		.moveTo(end_x,y)
+		.release()
+		.perform();
 	}
 
 

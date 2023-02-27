@@ -11,6 +11,10 @@ public class CliquesTeste extends BaseTest {
 	
 	private MenuPage menu = new MenuPage();
 	private CliquesPage page= new CliquesPage();
+	
+	public void setup() {
+		menu.acessarCliques();
+	}
 
 	@Test
 	public void deveRealizarCliqueLongo() {
@@ -21,5 +25,13 @@ public class CliquesTeste extends BaseTest {
 		page.cliqueLongo();
 		
 		Assert.assertEquals("Clique Longo", page.obterTextoCampo());
+	}
+	
+	public void deveRealizarCliqueDuplo() {
+		
+	
+	page.clicarPorTexto("Clique Duplo");
+	page.clicarPorTexto("Clique Duplo");
+	
 	}
 }
